@@ -13,7 +13,8 @@ LABEL io.openshift.expose-services="8080:http" \
 RUN sed -i "s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf
 
 # Assign all read and write files to group id 0, assume all files are root files for Openshift
-RUN chgrp -R 0 /var/log/httpd /var/run/httpd && \ chmod -R g=u /var/log/httpd /var/run/httpd
+RUN chgrp -R 0 /var/log/httpd /var/run/httpd && \ 
+    chmod -R g=u /var/log/httpd /var/run/httpd
 
 # Omit using root user
 USER 1001
